@@ -82,7 +82,7 @@
   
   }
  
-    self.scroll.contentOffset = CGPointMake(CGRectGetWidth(self.scroll.frame), 0);
+    [self.scroll setContentOffset:CGPointMake(CGRectGetWidth(self.scroll.frame), 0)];
 }
 
 
