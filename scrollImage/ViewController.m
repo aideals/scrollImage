@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
    
-    self.imageArray = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"dog 1"],[UIImage imageNamed:@"dog 2"],[UIImage imageNamed:@"dog 3"],[UIImage imageNamed:@"dog 4"], nil];
+    self.imageArray = [[NSArray alloc] initWithObjects:[UIImage imageNamed:@"dog 1"],[UIImage imageNamed:@"dog 2"],[UIImage imageNamed:@"dog 3"],[UIImage imageNamed:@"dog 4"], [UIImage imageNamed:@"dog 5"], nil];
     
     self.totalPage = self.imageArray.count;
     self.currentPage = 0;
@@ -37,6 +37,7 @@
     self.scroll.showsHorizontalScrollIndicator = NO;
     self.scroll.showsVerticalScrollIndicator = NO;
     self.scroll.pagingEnabled = YES;
+    self.scroll.delegate = self;
     [self.view addSubview:self.scroll];
 
     for (int i = 0; i < self.imageArray.count; i ++) {
@@ -74,7 +75,7 @@
     
     for (int i = 0; i < self.contentViews.count; i ++) {
         UIImage *image = [self.contentViews objectAtIndex:[self getValidNextPage:i]];
-        UIImageView *imageView = (UIImageView *)[self.scroll viewWithTag:10 + i];
+        UIImageView *imageView = (UIImageView *)[self.scroll viewWithTag:i + 10];
     
     if (imageView) {
         imageView.image = image;
@@ -82,7 +83,7 @@
   
   }
  
-    [self.scroll setContentOffset:CGPointMake(CGRectGetWidth(self.scroll.frame), 0)];
+    [self.scroll setContentOffset:CGPointMake((CGRectGetWidth(self.scroll.frame)), 0)];
 }
 
 
